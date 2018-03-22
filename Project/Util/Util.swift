@@ -1,5 +1,5 @@
 //
-//  Helper.swift
+//  Util.swift
 //  Project
 //
 //  Created by Kevin Sum on 13/6/2017.
@@ -13,7 +13,7 @@ import SwiftyJSON
 // Global logger
 let log = SwiftyBeaver.self
 
-class Helper: Any {
+class Util: Any {
     
     class var documentDirectory: URL {
         get {

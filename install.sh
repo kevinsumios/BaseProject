@@ -79,7 +79,6 @@ echo "/////////////////////////"
 echo "//  Git repo clean up  //"
 echo "/////////////////////////"
 rm -rf .git
-rm .gitignore
 rm LICENSE
 rm README.md
 rm install.sh

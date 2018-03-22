@@ -1,5 +1,5 @@
 //
-//  ApiHelper.swift
+//  ApiUtil.swift
 //  Project
 //
 //  Created by Kevin Sum on 9/7/2017.
@@ -11,11 +11,11 @@ import Foundation
 import MagicalRecord
 import SwiftyJSON
 
-class ApiHelper: NSObject {
+class ApiUtil: NSObject {
     
     // Mark: - Properties
     
-    static let shared = ApiHelper()
+    static let shared = ApiUtil()
     
     override init() {
         super.init()
@@ -25,8 +25,8 @@ class ApiHelper: NSObject {
     // MARK: - Public methods
     
     func request(
-        name: ApiHelper.Name,
-        env: ApiHelper.Env = defaultEnv,
+        name: ApiUtil.Name,
+        env: ApiUtil.Env = defaultEnv,
         method: Alamofire.HTTPMethod = .get,
         parameters: Parameters? = nil,
         encoding: ParameterEncoding = URLEncoding.default,
@@ -53,16 +53,16 @@ class ApiHelper: NSObject {
         }
     }
     
-    func url(forName name: ApiHelper.Name, env: ApiHelper.Env = defaultEnv) -> URL? {
+    func url(forName name: ApiUtil.Name, env: ApiUtil.Env = defaultEnv) -> URL? {
         if let baseUrl = value(forName: .baseUrl, env: env) {
             if let url = URL(string: value(forName: name, env: env) ?? "", relativeTo: URL(string: baseUrl)) {
                 return url
             } else {
-                log.warning("ApiHelper can not return the url properly with name(\(name)), env(\(env))")
+                log.warning("ApiUtil can not return the url properly with name(\(name)), env(\(env))")
                 return nil
             }
         } else {
-            log.error("ApiHelper can not get the baseUrl. Please make sure there is one string or dictionary record with key baseUrl in Api.plist!")
+            log.error("ApiUtil can not get the baseUrl. Please make sure there is one string or dictionary record with key baseUrl in Api.plist!")
             return nil
         }
     }
@@ -70,7 +70,7 @@ class ApiHelper: NSObject {
     // MARK: - Private methods
     
     private func updateDataFromPlist() {
-        let json = Helper.readPlist("Api")
+        let json = Util.readPlist("Api")
         // Do the data operation in default context
         MagicalRecord.save(blockAndWait: { (localContext) in
             // Always truncate the table first
@@ -86,19 +86,19 @@ class ApiHelper: NSObject {
             for (name, valueJson) in json {
                 if let string = valueJson.string, string != "" {
                     // A string value
-                    saveEntity(name: name, env: ApiHelper.Env.prod.rawValue, value: string)
+                    saveEntity(name: name, env: ApiUtil.Env.prod.rawValue, value: string)
                 } else if let dict = valueJson.dictionary {
                     // A dictionary with different env
                     var hasProd = false
                     for env in dict.keys {
-                        if (env == ApiHelper.Env.prod.rawValue) { hasProd = true }
+                        if (env == ApiUtil.Env.prod.rawValue) { hasProd = true }
                         saveEntity(name: name, env: env, value: dict[env]?.stringValue)
                     }
                     if (!hasProd) {
                         assert(false, "prod is a required env")
                     }
                 } else if let number = valueJson.number {
-                    saveEntity(name: name, env: ApiHelper.Env.prod.rawValue, value: "\(number.doubleValue)")
+                    saveEntity(name: name, env: ApiUtil.Env.prod.rawValue, value: "\(number.doubleValue)")
                 } else {
                     assert(false, "Api.plist parse error, please check the file or add your own handler here")
                 }
@@ -106,7 +106,7 @@ class ApiHelper: NSObject {
         })
     }
     
-    private func value(forName name: ApiHelper.Name, env: ApiHelper.Env = defaultEnv) -> String? {
+    private func value(forName name: ApiUtil.Name, env: ApiUtil.Env = defaultEnv) -> String? {
         let namePredicate = NSPredicate(format: "name == %@", name.rawValue)
         let envPredicate = NSPredicate(format: "env == %@", env.rawValue)
         if let value = Api.mr_findFirst(

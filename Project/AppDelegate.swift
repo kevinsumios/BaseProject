@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // SwiftyBeaver log setup
         let console = ConsoleDestination()
         log.addDestination(console)
-        log.info(Helper.documentDirectory)
+        log.info(Util.documentDirectory)
         
         // Siren setup
         Siren.shared.checkVersion(checkType: .daily)

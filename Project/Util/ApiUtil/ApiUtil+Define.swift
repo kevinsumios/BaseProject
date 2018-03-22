@@ -1,5 +1,5 @@
 //
-//  ApiHelper+Define.swift
+//  ApiUtil+Define.swift
 //  Project
 //
 //  Created by Kevin Sum on 9/7/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension ApiHelper {
+extension ApiUtil {
     
     enum Name: String {
         case baseUrl // baseUrl is required, do not remove
@@ -21,11 +21,11 @@ extension ApiHelper {
         case dev
     }
     
-    static internal var defaultEnv: ApiHelper.Env {
+    static internal var defaultEnv: ApiUtil.Env {
         #if DEBUG
-            return ApiHelper.Env.dev
+            return ApiUtil.Env.dev
         #else
-            return ApiHelper.Env.prod
+            return ApiUtil.Env.prod
         #endif
     }
     
