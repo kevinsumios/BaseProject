@@ -2,8 +2,8 @@
 
 ##Require
 
-1. Xcode 9.3+, Swift 3.0+
-2. Cocoapods 1.3.1+
+1. Xcode 10.2.1+, Swift 5.0+
+2. Cocoapods 1.6.1+
 3. Fastlane 2.60.1+(optional)
 
 

@@ -1,13 +1,13 @@
 PODS:
-  - Alamofire (4.7.2)
-  - IQKeyboardManagerSwift (6.0.3)
+  - Alamofire (4.9.0)
+  - IQKeyboardManagerSwift (6.4.2)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
-  - Siren (3.4.0)
-  - SwiftyBeaver (1.5.2)
+  - Siren (5.1.2)
+  - SwiftyBeaver (1.7.1)
   - SwiftyJSON (4.1.0)
-  - SwiftyTimer (2.0.0)
+  - SwiftyTimer (2.1.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -18,15 +18,25 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyTimer
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - MagicalRecord
+    - Siren
+    - SwiftyBeaver
+    - SwiftyJSON
+    - SwiftyTimer
+
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
-  Siren: 5b8be41b5cd05aa3528303325966e919bd53e412
-  SwiftyBeaver: 85daaaa2b3ae6e31b7b55c99430e8b91dac088af
+  Siren: ee674e4ab57f5cc23186202a11313bc50a661a61
+  SwiftyBeaver: da5e573ad583586c18236324c36900990afe1733
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
-  SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
+  SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
 
 PODFILE CHECKSUM: 0274a523495d422cf11811709db373716e89808e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.6.1
